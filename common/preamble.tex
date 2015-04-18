@@ -1,7 +1,9 @@
 \documentclass[a4paper]{article}
 
-\newcounter{IsEnglishArticle}
-\setcounter{IsEnglishArticle}{0}
+\newcommand{\DefineFlag}[2]{\newcounter{#1}\setcounter{#1}{#2}}
+\newcommand{\SetFlag}[2]{\setcounter{#1}{#2}}
+
+\DefineFlag{IsEnglishArticle}{0}
 \input{config}
 
 \input{../common/font}

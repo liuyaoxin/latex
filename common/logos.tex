@@ -1,3 +1,4 @@
+\ifnum \value{IsEnglishArticle}=0
 % 用TimesNewRoman表现的TeX标志比较耐看，其他字体不好看。
 \let\OldTeX\TeX
 \renewcommand\TeX{{\TimesNewRoman\mdseries{\OldTeX\hspace{0.1em}}}}
@@ -17,6 +18,7 @@
 \renewcommand\MP{{\TimesNewRoman\mdseries{\OldMP\hspace{0.1em}}}}
 \let\OldAmS\AmS
 \renewcommand\AmS{{\TimesNewRoman\mdseries{\OldAmS\hspace{0.1em}}}}
+\fi
 
 % 危险警告标志
 \newcommand*{\TakeFourierOrnament}[1]{{%
