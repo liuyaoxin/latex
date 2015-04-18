@@ -1,0 +1,23 @@
+\documentclass[a4paper]{article}
+
+\newcounter{IsEnglishArticle}
+\setcounter{IsEnglishArticle}{0}
+\input{config}
+
+\input{../common/font}
+\input{../common/packages}
+\input{../common/logos}
+\input{../common/menukeys} % 漂亮的键盘符号
+\input{../common/mdframed} % 漂亮的文本段落线框和背景颜色，例如大段引用区域。
+\input{../common/quote} % 漂亮的中英文段落引用
+\input{../common/link} % 引用、脚注、url超链接，文内超链接
+\input{../common/listing} % 原文抄录，例如源代码
+\input{../common/figuretable} % 图表
+\input{../common/list} % 有序列表、无序列表、描述列表
+\input{../common/titleformat} % 标题格式控制
+
+% 默认段距
+\setlength\parskip{1em}
+
+% em is the TeX command and emph is its LaTeX equivalent. Therefore, you should use the emph when using LaTeX.
+\renewcommand\emph[1]{{\sffamily\bfseries{\hspace{0em}#1\hspace{0em}}}}

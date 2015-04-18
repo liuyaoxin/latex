@@ -1,0 +1,45 @@
+% 设置图表显示格式
+\renewcommand{\thefigure}{\thesection-\arabic{figure}}
+\renewcommand{\thetable}{\thesection-\arabic{table}}
+\DeclareCaptionLabelFormat{FigureLabel}{\sffamily\bfseries\footnotesize{#1\hspace{0.5em}#2}}
+\DeclareCaptionLabelFormat{TableLabel}{\sffamily\bfseries\footnotesize{\raisebox{-1ex}{#1\hspace{0.5em}#2}}}
+
+\ifnum \value{IsEnglishArticle}>0
+    \captionsetup[figure]{labelformat=FigureLabel,skip=1em,labelsep=none,name={Figure}}
+	\captionsetup[table]{labelformat=TableLabel,skip=1em,labelsep=none,name={Table}}
+\else
+	\captionsetup[figure]{labelformat=FigureLabel,skip=1em,labelsep=none,name={图}}
+	\captionsetup[table]{labelformat=TableLabel,skip=1em,labelsep=none,name={表}}
+\fi
+
+% 唯一的参数代表Caption。Caption为空的情况下，不出现冒号
+% \ifstrempty 是非常棒的条件测试工具！
+\NewDocumentEnvironment{Figure}{m}
+	{\begin{figure}[htp]\centering}
+	{
+		\ifstrempty{#1}
+			{\caption{#1}}
+			{\caption{\footnotesize\hspace{1em}#1}}
+	\end{figure}
+	}
+
+% 唯一的参数代表顶部Caption。Caption不可为空。
+\NewDocumentEnvironment{Table}{m}
+	{\begin{table}[!h]
+		\centering
+		\captionsetup{font={bf,sf},skip=0.5ex}
+		\caption*{{\large{#1}}}
+	}
+	{
+		\caption{}
+	\end{table}
+	}
+	
+% 设置三线式表格
+\setlength\heavyrulewidth{1.5pt} % 粗线宽度
+\setlength\aboverulesep{0.5ex} % 线前距离
+\setlength\belowrulesep{1ex} % 线后距离
+
+% 使每一个Section的计数器自动清零，这样图表的编号就以section为编号空间。
+\counterwithin{figure}{section}
+\counterwithin{table}{section}

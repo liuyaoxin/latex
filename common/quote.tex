@@ -1,0 +1,6 @@
+% 技巧！楷书+斜体，中文楷书没有斜体，因此就是普通楷书，英文则以斜体显示。
+% \AdobeKaiti\CourierNew{TextBody}含义：优先使用CourierNew，如果某个字符CourierNew无法显示，则用AdobeKaiti。
+% 效果：英文字符可以用CourierNew显示，因此英文部分显示为CourierNew。但是CourierNew不认识中文，
+% 于是中文就用AdobeKaiti输出。
+\newenvironment{QuoteChinese}{\begin{mdframed}\begin{quoting}\AdobeKaiti\CourierNew}{\end{quoting}\end{mdframed}}
+\newenvironment{QuoteEnglish}{\begin{mdframed}\begin{quoting}\TimesNewRoman\itshape{}}{\end{quoting}\end{mdframed}}

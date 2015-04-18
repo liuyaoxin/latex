@@ -1,0 +1,128 @@
+\section{\LaTeX{}排版的基本观念}
+
+{
+{\AdobeFangSong{“Hello”}}
+
+{\AdobeFangSong{"Hello"}}
+
+{\TimesNewRoman{“Hello”}}
+
+{\TimesNewRoman{"Hello"}}
+
+{\Arial{“Hello”}}
+
+{\Arial{"Hello"}}
+
+{\CodeFont{“Hello”}}
+
+{\CodeFont{"Hello"}}
+
+"Hello, Normal Text"
+}
+
+\Warning{}司创始人Motolola腾讯公司创始人。
+
+\Warning{}公司创始人Motolola腾讯公司创始人。
+
+\Warning{}腾讯公司创始人Motolola腾讯公司创始人。
+
+\subsection{排版和创作是相互正交的两种智力活动}
+创作的时候不应该考虑排版。创作过程中，只需要按照最简单的\emph{顺序结构和层次结构}去安排章节，不用去关心章节编号、字体样式等与创作内容无关的细节性问题。
+
+\LaTeX
+
+排版的时候也不应该考虑创作的具体内容。只需要考虑如何自动编号章节和图表；如何选择合适的字体；如何自动生成目录等等。
+
+\begingroup
+腾讯公司创始人Motolola Motolola腾讯公司创始人
+
+腾讯公司创始人\bfseries{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\itshape{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\sffamily{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\ttfamily{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\bfseries\itshape{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\itshape\sffamily{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\bfseries\itshape\sffamily{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\bfseries\sffamily{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\sffamily{Motolola Motolola}腾讯公司创始人
+
+腾讯公司创始人\ttfamily{Motolola Motolola}腾讯公司创始人
+\endgroup
+
+\subsection{用语义性指令表达排版要求}
+\label{subsec:semantics}
+
+创作过程中，不应显式地嵌入排版样式指令。如果需要强调一段文字，不要这样做：
+
+\begin{lstlisting}[language=TeX]
+这是一段\bdseries\itshape{需要强调}的文字。% 用粗体加斜体表示强调
+\end{lstlisting}
+
+应该这样做：
+
+\begin{lstlisting}[language=TeX]
+这是一段\emph{需要强调}的文字。
+\end{lstlisting}
+
+\textbackslash{}emph就是emphasis的意思；至于怎么表示强调，是排版阶段决定的事情。这样可以准确传递作者的原始意图，可以确保全文具有统一的风格。
+
+\subsection{空格和空行的特殊行为}
+
+在\LaTeX{}中：
+
+\begin{Itemize}
+\item {一个空格和多个空格等价，视为一个空格。}
+\item {一个空行和多个空行等价，视为一个空行。}
+\item {在一行文字前面的任意多个空格都将被忽略，视为无空格。}
+\item {在一个段落前面的任意多个空行都将被忽略，视为无空行。}
+\item {\textbackslash{}hspace可用于增加字间距。}
+\item {\textbackslash{}vspace可用于增加行间距。}
+\item {\textbackslash{}quad和\textbackslash{}qquad是增加字间距的简便方法。}
+\end{Itemize}
+
+\subsection{\LaTeX{}的保留字符}
+
+下面的这些字符是\LaTeX{}的保留字符：
+
+\# \qquad \$ \qquad \% \qquad \& \qquad \_ \qquad \{ \qquad \} \qquad \textasciicircum{} \qquad \textasciitilde{} \qquad \textbackslash{}
+
+大多数保留字符的输出方法是在其前面加上\textbackslash{}：
+
+\textbackslash{}\# \qquad \textbackslash{}\$ \qquad \textbackslash{}\% \qquad \textbackslash{}\& \qquad \textbackslash{}\_ \qquad \textbackslash{}\{ \qquad \textbackslash{}\}
+
+\emph{注意：\textasciicircum{}、\textasciitilde{}和\textbackslash{}的输出方法比较特殊:}
+
+\textasciicircum{}的输出命令：\textbackslash{}textasciicircum\{\}
+
+\textasciitilde{}的输出命令：\textbackslash{}textasciitilde\{\}
+
+\textbackslash{}的输出命令：\textbackslash{}textbackslash\{\}
+
+\subsection{特殊符号的输出方法}
+
+特殊符号可以通过命令输出。例如：
+
+\textbackslash{}LaTeXe\{\}输出：\LaTeXe{}
+
+\textbackslash{}copyright\{\}输出：\copyright{}。
+
+\subsection{中文和English Text混排效果}
+\label{subsec:chinese_mix_english}
+
+默认情况下，中英文混排将会采用同一种字体输出中文和English，有些字体中文好看，But the English text looks very ugly. 因此，必须找到一种中英文输出都很漂亮的字体。这将从根本上决定混排效果的好坏。
+
+目前，我们认为\emph{微软雅黑、Adobe楷体、Times New Roman}是最好的。其中\emph{微软雅黑}是主力字体。\emph{Adobe楷体}用于中文引文，\emph{Times New Roman}用于英文引文。至此，字体的完美组合形成了。三种字体打遍天下。
+
+\subsection{那些难忘的坑}
+
+由于设计失误，导致newenvironment的尾块『相对于首块』不能包含\#参数，否则编译不过。
+
+不能把命令名字拼写错误，否则稀奇古怪的错误。

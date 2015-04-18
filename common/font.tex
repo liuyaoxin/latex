@@ -1,0 +1,68 @@
+\usepackage[adobefonts]{ctex}
+\usepackage{fontspec}
+
+%
+% 不要写错Adobe的四种字体名称：Adobe Song Std，Adobe Fangsong Std，Adobe Heiti Std，Adobe Kaiti Std
+% 
+% 大段英文优先选用Arial，主要是和Adobe黑体的风格相互协调。
+%
+% 主力中文字体2类：Adobe（4种）
+% 主力英文字体3类：Arial, Times New Roman, Courier New
+%
+% CTex定义了四种常见中文字体：\heiti, \songti, \fangsong, \kaishu。
+%
+\newcommand{\Arial}{\fontspec{Arial}} % Best Sans-Serif Font in pure English Environment
+\newcommand{\TimesNewRoman}{\fontspec{Times New Roman}} % Best Serif font in pure English environment
+\newcommand{\CodeFont}{\fontspec{Courier New}} % 最佳代码显示字体, Best monospace font
+\newcommand{\CourierNew}{\fontspec{Courier New}} % 最佳中英文混排中的英文字体
+
+\newcommand{\AdobeSong}{\fontspec{Adobe Song Std}}
+\newcommand{\AdobeFangSong}{\fontspec{Adobe Fangsong Std}}
+\newcommand{\AdobeHeiti}{\fontspec{Adobe Heiti Std}}
+\newcommand{\AdobeKaiti}{\fontspec{Adobe Kaiti Std}}
+
+% 注意：微软雅黑不适合显示大段英文字体，主要是其标点符号是中文风格，
+% 用微软雅黑显示一段包含标点符号的英文段落会极其难看。
+%
+% 显示大段英文，还是临时指定特定的英文显示字体比较好。例如TimesNewRoman。
+% 微软雅黑最大的优点在于中英文混排环境下的英文效果绝佳。
+%
+% 下面六条命令极其重要。全局性配置字体。而且是中英文分别配置。
+% 中英文分别配置原理：setCJKmainfont会自动判断一个字符是否为中日韩字符。
+% 如果是，就调用指定的字体，否则就调用系统原来设定的字体。
+% 放在后面的命令更加优先。
+%
+% 中英文混排如何任意地分别指定中英文字体？
+% \ChineseFont\EnglishFontSettings{Text}
+%
+% 黑体其实就是中文的粗体。粗体的作用有两个：1、显示标题；2、强调。
+% 斜体的作用：表示引用。
+% Adobe Heiti依然是最好的中文粗体。微软雅黑最大的优点在于中英文混排环境下的英文效果绝佳。
+% 因此，我们的字体策略：
+% 1、Heiti显示标题和强调；（这一步由 \setCJK*font 控制）
+% 2、Fangsong显示正文；（这一步由 \setCJK*font 控制）
+% 3、用Song表示引用部分字体；（这一步由 \setCJK*font 控制）
+% 4、如果其中夹杂有英文，则自动以微软雅黑显示英文部分。（这一步由 \set*font 控制）
+% 5、Arial可以完全替代微软雅黑。
+%
+% 英文字体设置以下面为准。在后面的导言区可以重新定义这些字体设置，以适合纯英文的不同需要。
+
+\ifnum \value{IsEnglishArticle}>0
+\setmainfont{Arial} % 罗马字体，有衬线。Courier New的笔划很细，与仿宋协调。
+\setsansfont{Arial} % 无衬线
+\setmonofont{Courier New} % 等宽
+\else
+\setmainfont{Courier New} % 罗马字体，有衬线。Courier New的笔划很细，与仿宋协调。
+\setsansfont{Arial} % 无衬线
+\setmonofont{Courier New} % 等宽
+\fi
+
+% 中文字体设置以下面为准。
+% 注意：加粗时更换字体为黑体，斜体对中文无效
+%
+% 衬线字体。仿宋本质上是衬线字体。粗体用黑体代替，斜体用楷体代替。
+\setCJKmainfont[BoldFont=Adobe Heiti Std,ItalicFont=Adobe Kaiti Std,SmallCapsFont=*]{Adobe Fangsong Std} 
+% 无衬线字体。黑体本质上是无衬线字体。黑体加粗或者加斜都保持原状不变。
+\setCJKsansfont[BoldFont=Adobe Heiti Std,ItalicFont=Adobe Heiti Std,SmallCapsFont=*]{Adobe Heiti Std}
+% 等宽字体。中文本质上是等宽字体，默认继续使用仿宋。粗体用黑体代替，斜体用楷体代替。
+\setCJKmonofont[BoldFont=Adobe Heiti Std,ItalicFont=Adobe Kaiti Std,SmallCapsFont=*]{Adobe Fangsong Std}

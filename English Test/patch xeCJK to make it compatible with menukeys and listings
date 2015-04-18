@@ -1,0 +1,10 @@
+This combination of packages is attempting to load the xeCJK package twice: once on line 11 of ctex-xecjk-engine.def from the ctex package, and then again on line 43 of xeCJK-listings.sty from the listings package. The clash you are getting is that the options are different in each case (the first one specifies [BoldFont,normalindentfirst] while the second gives no options).
+
+You can patch this by editing line 43 of xeCJK-listings.sty (which is in your texmf directory under tex/xelatex/xecjk) to read
+
+\@ifpackageloaded{xeCJK}{}{\RequirePackage { xeCJK }}
+which simply doesn't try to reload xeCJK if it's already loaded.
+
+This allows your minimal example to compile, and a simple listing to be included. I should note, though, that I haven't checked whether anything in listings is specifically incompatible with the [BoldFont,normalindentfirst] options to xeCJK. I can't imagine there is, but still, caveat TeXor and all that.
+
+(Edited to note: this patch is specific to listings being loaded second, after ctex. I don't know enough about these packages to advise whether this is the "right" order to load these in and therefore the right place to put the patch, but it does fix the document as specified.) 

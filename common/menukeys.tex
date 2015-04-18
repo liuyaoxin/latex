@@ -1,0 +1,30 @@
+% 漂亮的键盘符号
+% Handy switcher for menukeys. Switch from win to mac, from text to symbol, and vice versa.
+\makeatletter
+\def\SetMenuKeysToWin{\def\tw@mk@os{win}}
+\def\SetMenuKeysToMac{\def\tw@mk@os{mac}}
+\def\SetMacKeysText{\def\tw@mk@mackeys{text}}
+\def\SetMacKeysSymbol{\def\tw@mk@mackeys{symbol}}
+\makeatother
+
+% 设置munukey的key风格
+\renewcommand\delname{Del} % 让Delete键显示为"Del"而不是默认的"Del."
+\let\OldKeys=\keys
+\newcommand\Keys[1]{\hspace{0.5em}\OldKeys{#1}\hspace{0.5em}}
+\renewmenumacro{\keys}[+]{shadowedroundedkeys} % Here, '+' means "Ctrl + Alt + Del"
+\newcommand\ShadowedKeys[1]{\hspace{0.5em}\keys{#1}\hspace{0.5em}}
+
+% 设置munukey的menu风格
+\let\FirstOldMenu=\menu
+\renewmenumacro{\menu}[>]{menus}
+\newcommand\SimpleMenu[1]{\hspace{0.5em}\menu[>]{#1}\hspace{0.5em}}
+
+% 设置munukey的menu风格
+\let\SecondOldMenu=\FirstOldMenu
+\renewmenumacro{\FirstOldMenu}[>]{roundedmenus}
+\newcommand\RoundedMenu[1]{\hspace{0.5em}\FirstOldMenu[>]{#1}\hspace{0.5em}}
+
+% 设置munukey的menu风格
+\let\ThirdOldMenu=\SecondOldMenu
+\renewmenumacro{\SecondOldMenu}[>]{angularmenus}
+\newcommand\AngularMenu[1]{\hspace{0.5em}\SecondOldMenu[>]{#1}\hspace{0.5em}}

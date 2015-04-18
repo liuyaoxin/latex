@@ -1,0 +1,12 @@
+\title{\Huge\sffamily\bfseries{\TitleName}}
+\author{\AuthorName}
+\date{\DateLabel}
+
+\ifnum \value{IsEnglishArticle}>0
+\pdfbookmark[1]{Title}{title}
+\else
+\pdfbookmark[1]{首页}{title}
+\fi
+
+\maketitle
+\thispagestyle{empty} % 首页不显示页码

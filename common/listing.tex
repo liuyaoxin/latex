@@ -1,0 +1,54 @@
+\AtBeginDocument{% Code编号方案，很有学习价值
+  \counterwithin*{lstlisting}{section}
+  \renewcommand{\thelstlisting}{%
+    \ifnum\value{subsection}=0
+      \thesection-\arabic{lstlisting}%    
+    \fi
+  }%
+} % e.g. Code 4-1: Hello.cpp
+
+% Code编号方案，很有学习价值
+%\AtBeginDocument{% Code编号方案，很有学习价值
+%  \counterwithin*{lstlisting}{section}
+%  \counterwithin*{lstlisting}{subsection}
+%  \counterwithin*{lstlisting}{subsubsection}
+%  \renewcommand{\thelstlisting}{%
+%    \ifnum\value{subsection}=0
+%      \thesection.\arabic{lstlisting}%
+%    \else
+%      \ifnum\value{subsubsection}=0
+%        \thesubsection.\arabic{lstlisting}%
+%      \else
+%        \thesubsubsection.\arabic{lstlisting}%
+%      \fi
+%    \fi
+%  }%
+%} % Code 4.1: Hello.cpp
+
+% 源代码格式，Label和标题必须同时出现
+\renewcommand*{\lstlistingname}{Code}
+\DeclareCaptionFormat{listing}{\centering\AdobeHeiti\footnotesize{\bfseries{#1#2}\mdseries{#3}}} % Label|Separator|Title
+\captionsetup[lstlisting]{format=listing}
+\lstset
+{
+	backgroundcolor=\color{lightgray},
+	basicstyle=\ttfamily\CodeFont\mdseries,
+	keywordstyle=\bfseries,
+	commentstyle=\rmfamily\itshape\TimesNewRoman,
+	columns=fixed,
+	keepspaces=true,
+	showstringspaces=false,
+	%stringstyle=\ttfamily\AdobeHeiti\mdseries,
+	xleftmargin=2em,
+	numbers=none,
+	numberstyle=\AdobeHeiti\mdseries\footnotesize,
+	numbersep=1em,
+	tabsize=4,
+	showtabs=false,
+}
+\lstnewenvironment{Listing}[1]{\lstset{language={#1},numbers=none}}{}
+\lstnewenvironment{ListingWithNumbers}[1]{\lstset{language={#1},numbers=left}}{}
+\lstnewenvironment{ListingWithTitleNoNumbers}[2]{\lstset{language={#1},title={\AdobeHeiti\footnotesize #2},numbers=none}}{}
+\lstnewenvironment{ListingWithTitleWithNumbers}[2]{\lstset{language={#1},title={\AdobeHeiti\footnotesize #2},numbers=left}}{}
+\lstnewenvironment{ListingWithCaptionNoNumbers}[2]{\lstset{language={#1},caption={\AdobeHeiti\footnotesize #2},numbers=none}}{}
+\lstnewenvironment{ListingWithCaptionWithNumbers}[2]{\lstset{language={#1},caption={\AdobeHeiti\footnotesize #2},numbers=left}}{}

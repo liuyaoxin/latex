@@ -1,0 +1,77 @@
+\clearpage
+\section{表格}
+
+有表格的地方，必须手动调整内容。否则有可能浮动到不希望的地方去。
+
+\subsection{第二种样式}
+
+\subsubsection{姓名性别年龄天王巨星}
+\begin{table}[!h]
+\centering
+\captionsetup{font={bf},skip=0.5ex}
+\caption*{天王巨星}
+	\begin{tabular}{*{5}{c}}
+	\toprule
+	\bfseries 姓名  & \bfseries 年龄 & \bfseries 年龄 & \bfseries 年龄 & \bfseries 电话 \\
+	\midrule
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{张旭热}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{万  民}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{张旭热}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{万  民}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	\bottomrule
+	\end{tabular}
+\caption{}
+\end{table}
+
+\subsection{第一种样式}
+
+\begin{table}[!h]
+\centering
+\captionsetup{font={bf},skip=0.5ex}
+\caption*{Access Levels}
+	\begin{tabular}{l*{4}{c}}
+	\toprule
+	\bfseries Modifier   & \bfseries Class & \bfseries Package & \bfseries Subclass & \bfseries World \\
+	\midrule
+	\texttt{public}      & Y               & Y                 & Y                  & Y               \\
+	\texttt{protected}   & Y               & Y                 & Y                  & N               \\
+	\itshape no modifier & Y               & Y                 & N                  & N               \\
+	\texttt{private}     & Y               & N                 & N                  & N               \\
+	\bottomrule
+	\end{tabular}
+\caption{}
+\end{table}
+
+\subsection{第三种样式}
+
+\begin{Table}{Java Rules}
+\begin{tabular}{l*{4}{c}}
+	\toprule
+	\bfseries Modifier   & \bfseries Class & \bfseries Package & \bfseries Subclass & \bfseries World \\
+	\midrule
+	\texttt{public}      & Y               & Y                 & Y                  & Y               \\
+	\texttt{protected}   & Y               & Y                 & Y                  & N               \\
+	\itshape no modifier & Y               & Y                 & N                  & N               \\
+	\texttt{private}     & Y               & N                 & N                  & N               \\
+	\bottomrule
+\end{tabular}
+\end{Table}
+
+\begin{Table}{香港天王巨星}
+\begin{tabular}{*{5}{c}}
+	\toprule
+	\bfseries 姓名  & \bfseries 性别 & \bfseries 年龄 & \bfseries 收入 & \bfseries 电话 \\
+	\midrule
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	{刘德华}        &{男}            &{52}            &{\${67800}}     &{15812356985}   \\
+	\bottomrule
+\end{tabular}
+\end{Table}

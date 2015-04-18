@@ -1,0 +1,28 @@
+% 用TimesNewRoman表现的TeX标志比较耐看，其他字体不好看。
+\let\OldTeX\TeX
+\renewcommand\TeX{{\TimesNewRoman\mdseries{\OldTeX\hspace{0.1em}}}}
+\let\OldLaTeX\LaTeX
+\renewcommand\LaTeX{{\TimesNewRoman\mdseries{\OldLaTeX\hspace{0.1em}}}} 
+\let\OldLaTeXe\LaTeXe
+\renewcommand\LaTeXe{{\TimesNewRoman\mdseries{\OldLaTeXe\hspace{0.1em}}}} 
+\let\OldXeTeX\XeTeX
+\renewcommand\XeTeX{{\TimesNewRoman\mdseries{\OldXeTeX\hspace{0.1em}}}}
+\let\OldXeLaTeX\XeLaTeX
+\renewcommand\XeLaTeX{{\TimesNewRoman\mdseries{\OldXeLaTeX\hspace{0.1em}}}}
+\let\OldBibTeX\BibTeX
+\renewcommand\BibTeX{{\TimesNewRoman\mdseries{\OldBibTeX\hspace{0.1em}}}}
+\let\OldMF\MF
+\renewcommand\MF{{\TimesNewRoman\mdseries{\OldMF\hspace{0.1em}}}}
+\let\OldMP\MP
+\renewcommand\MP{{\TimesNewRoman\mdseries{\OldMP\hspace{0.1em}}}}
+\let\OldAmS\AmS
+\renewcommand\AmS{{\TimesNewRoman\mdseries{\OldAmS\hspace{0.1em}}}}
+
+% 危险警告标志
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\Warning}{{
+	\bfseries\Arial\larger\larger{
+		\raisebox{0.5\depth}{\TakeFourierOrnament{66}}
+		}
+	}}

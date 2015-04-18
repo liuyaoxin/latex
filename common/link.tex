@@ -1,0 +1,48 @@
+% 超链接格式
+\hypersetup
+{
+	colorlinks=true,
+	linkcolor=red,
+	urlcolor=blue,
+	citecolor=red,
+	bookmarksopen=false,
+	bookmarksnumbered=true,
+	pdfborder=0 0 0
+}
+
+% 最佳脚注格式
+\makeatletter
+\newlength{\fnBreite}
+\renewcommand{\@makefntext}[1]
+{
+	\settowidth{\fnBreite}{\footnotesize\@thefnmark.i}
+	\protect\footnotesize\upshape
+	\setlength{\@tempdima}{\columnwidth}\addtolength{\@tempdima}{-\fnBreite}
+	\makebox[\fnBreite][l]{\@thefnmark \phantom{}}
+	\parbox[t]{\@tempdima}{\everypar{\hspace*{1em}}\hspace*{-1em}\upshape\fangsong{#1}
+}}
+\makeatother
+\renewcommand\thefootnote{\ding{\numexpr171+\value{footnote}}} % 定义脚注的圆圈符号
+\renewcommand\footnotesep{1.5em} % 各条脚注段落之间的距离
+
+\newcommand\Reference[1]{\textsuperscript{[\ref{#1}]}} % 设置脚注
+
+\newcommand\RefLRS[1]{\hspace{0.5em}\ref{#1}\hspace{0.5em}} % 请参考 1.6 。
+\newcommand\RefLS[1]{\hspace{0.5em}\ref{#1}} % 请参考 1.6。
+\newcommand\RefRS[1]{\ref{#1}\hspace{0.5em}} % 请参考1.6 。章节 1.6显示：
+\newcommand\Ref[1]{\ref{#1}} % 请参考1.6。
+
+\newcommand\PageRefLRS[1]{\hspace{0.5em}\pageref{#1}\hspace{0.5em}} % 请参考第 3 页。
+\newcommand\PageRefLS[1]{\hspace{0.5em}\pageref{#1}} % 请参考第 3页。
+\newcommand\PageRefRS[1]{\pageref{#1}\hspace{0.5em}} % 请参考第3 页。
+\newcommand\PageRef[1]{\pageref{#1}} % 请参考第3页。
+
+\newcommand\UrlRefLRS[2]{\href{#1}{\hspace{0.5em}\bfseries{#2}\hspace{0.5em}}} % 网页超链接
+\newcommand\UrlRefLS[2]{\href{#1}{\hspace{0.5em}\bfseries{#2}}} % 网页超链接
+\newcommand\UrlRefRS[2]{\href{#1}{\bfseries{#2}\hspace{0.5em}}} % 网页超链接
+\newcommand\UrlRef[2]{\href{#1}{\bfseries{#2}}} % 网页超链接
+
+\newcommand\LinkRefLRS[2]{\hyperref[#1]{\hspace{0.5em}\bfseries{#2}\hspace{0.5em}}} % 文章内部超链接
+\newcommand\LinkRefLS[2]{\hyperref[#1]{\hspace{0.5em}\bfseries{#2}}} % 文章内部超链接
+\newcommand\LinkRefRS[2]{\hyperref[#1]{\bfseries{#2}\hspace{0.5em}}} % 文章内部超链接
+\newcommand\LinkRef[2]{\hyperref[#1]{\bfseries{#2}}} % 文章内部超链接

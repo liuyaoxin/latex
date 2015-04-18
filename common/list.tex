@@ -1,0 +1,17 @@
+% 列表格式 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                  % 
+% labelindent is for label only;                   %
+% leftmargin is for the item text only;            %
+% we can override the settings in place if needed. %
+%                                                  %
+% It is LaTeX's rule that if the optional argument %
+% is not present, then #1 takes on the default     %
+% value.                                           % 
+%                                                  % 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newenvironment{Enumerate}{\begin{enumerate}[leftmargin=4em]}{\end{enumerate}}
+\newenvironment{Itemize}{\begin{itemize}[leftmargin=4em]}{\end{itemize}}
+\newenvironment{Description}[1][6em]{ % Only 1 parameter, and the default value is 6em
+\begin{description}[style=multiline,labelindent=2em,leftmargin=#1,rightmargin=2em]}
+{\end{description}}
+\renewcommand\labelenumi{\TimesNewRoman\mdseries\rmfamily{(\theenumi)}} % (1), (2), (3), ...

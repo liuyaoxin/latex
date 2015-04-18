@@ -1,0 +1,33 @@
+% 设置目录中的标题字体。默认情况很好，故无需启用。
+%\renewcommand{\cftsecfont}{\YaHei\bfseries}
+%\renewcommand{\cftsubsecfont}{\YaHei}
+%\renewcommand{\cftsubsubsecfont}{\YaHei}
+
+\renewcommand{\cftsecnumwidth}{2em}
+\renewcommand{\cftsubsecnumwidth}{3em}
+\renewcommand{\cftsubsubsecnumwidth}{3em}
+
+\renewcommand{\cftsecindent}{0em}
+\renewcommand{\cftsubsecindent}{2em}
+\renewcommand{\cftsubsubsecindent}{5em}
+\renewcommand{\cftbeforesecskip}{1em}
+\renewcommand{\cftbeforesubsecskip}{1em}
+\renewcommand{\cftbeforesubsubsecskip}{1em}
+
+% 单独调整目录项中的数字编号字体。默认情况很好，故无需启用。
+%\renewcommand{\cftsecpresnum}{\bfseries\rmfamily}
+%\renewcommand{\cftsubsecpresnum}{\mdseries\rmfamily}
+%\renewcommand{\cftsubsubsecpresnum}{\mdseries\rmfamily}
+
+% 设置目录二字后面的行距
+\setlength\cftaftertoctitleskip{2em}
+
+\ifnum \value{IsEnglishArticle}>0
+    \renewcommand{\contentsname}{\centerline{\large\bfseries\Arial{Table of Contents}}}
+	\pdfbookmark[1]{Table of Contents}{contents}
+	\tableofcontents
+\else
+	\renewcommand{\contentsname}{\centerline{\large\AdobeHeiti{目 \quad 录}}}
+	\pdfbookmark[1]{目录}{contents}
+	\tableofcontents
+\fi

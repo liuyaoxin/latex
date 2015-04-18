@@ -1,0 +1,33 @@
+\let\oldabstract\abstract
+\let\oldendabstract\endabstract
+
+\makeatletter
+\renewenvironment{abstract}
+{\renewenvironment{quotation}%
+               {\list{}{\addtolength{\leftmargin}{-0.5em} % change this value to add or remove length to the the default
+                        \listparindent 1.5em%
+                        \itemindent    \listparindent%
+                        \rightmargin   \leftmargin%
+                        \parsep        \z@ \@plus\p@}%
+                \item\relax}%
+               {\endlist}%
+\oldabstract}
+{\oldendabstract}
+\makeatother
+
+\ifnum \value{IsEnglishArticle}>0
+	\renewcommand{\abstractname}{\centerline{\large\bfseries\Arial{Abstract}}}
+	\pdfbookmark[1]{Abstract}{abstract}
+\else
+	\renewcommand{\abstractname}{\centerline{\large\AdobeHeiti{摘 \quad 要}}}
+	\pdfbookmark[1]{摘要}{abstract}
+\fi    
+
+\begin{abstract}
+
+\vspace{-4em}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{1em}
+\noindent\qquad\input{./contents/abstract}
+
+\end{abstract}

@@ -1,0 +1,31 @@
+% 漂亮的文本段落线框和背景颜色，例如大段引用区域。
+\definecolor{FrameBackgroundColor}{gray}{0.95}
+\definecolor{FrameTitleBackgroundColor}{named}{lightgray}
+\mdfsetup{
+	backgroundcolor=FrameBackgroundColor,
+	skipabove=1.5em,
+	skipbelow=0em,
+	leftmargin=2em,
+	rightmargin=2em,
+	innertopmargin=1em,
+	innerbottommargin=1em,
+	innerleftmargin=1em,
+	innerrightmargin=1em,
+	frametitleaboveskip=0.5em,
+	frametitlebelowskip=0.5em,
+	frametitlerule=true,
+	frametitlealignment={\center},% default=\raggedleft
+	frametitlebackgroundcolor=FrameTitleBackgroundColor,
+	splittopskip=2\topsep% Useful when the frames are split on several pages.
+}
+%
+% mdfsetup:
+%
+% Title的对齐方式有4种：左中右和微调。注意该包有一个bug：左右对齐的顺序搞反了。
+% 居中：\mdfsetup{frametitlealignment={\center}}
+% 微调：\mdfsetup{frametitlealignment={\hspace*{-2em}}} 默认情况下坐标0从缩进处开始计算
+% 本来应该是右对齐，结果是左对齐。\mdfsetup{frametitlealignment={\raggedright}} 坐标0从未缩进处开始计算
+% 本来应该是左对齐，结果是右对齐。\mdfsetup{frametitlealignment={\raggedleft}}
+%
+% 用法：\begin{mdframed}[frametitle={资源消耗非常小}]，后面的可选参数设置标题。不设置就没有。
+%
