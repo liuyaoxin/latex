@@ -1,0 +1,21 @@
+\input{../common/preamble}
+
+\begin{document}
+
+\input{../common/title}
+
+\clearpage
+\pagenumbering{roman} % 摘要和目录，页码使用罗马数字。此命令会将计数器自动清零。
+\input{../common/abstract}
+
+\clearpage
+\input{../common/toc}
+
+\clearpage
+\pagenumbering{arabic} % 从正文到结束，页码使用阿拉伯数字。此命令会将计数器自动清零。
+\input{./contents/body}
+
+\clearpage
+\input{../common/references}
+
+\end{document}

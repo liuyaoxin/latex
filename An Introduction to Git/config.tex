@@ -1,0 +1,18 @@
+\stepcounter{IsEnglishArticle}
+\newcommand\TitleName{A Guide to \LaTeX{}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                        %
+%     Stable Section     %
+%                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ifnum \value{IsEnglishArticle}>0
+	\newcommand\ReferencesName{References}
+\else
+	\newcommand\ReferencesName{参考文献}
+\fi
+
+\newcommand\AuthorName{yaoxinliu@tencent.com}
+\newcommand\DateLabel{\the\year{}-\twodigit{\the\month}-\twodigit{\the\day}}
