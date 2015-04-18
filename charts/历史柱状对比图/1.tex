@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage[adobefonts]{ctex} %支持中文就靠这一行了
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[active,xetex,tightpage]{preview} %这一行有改动，将pdftex换成xetex
+\usepackage{tcolorbox}
+
+\newtcbox{\myovalbox}{
+	colback=white,
+	colframe=blue,
+	boxrule=1pt,
+	arc=2pt,
+	boxsep=0pt,
+	left=3pt,right=3pt,top=3pt,bottom=3pt}
+  
+\PreviewEnvironment[]{tikzpicture}
+\PreviewEnvironment[]{pgfpicture}
+\DeclareSymbolFont{symbolsb}{OMS}{cmsy}{m}{n}
+\SetSymbolFont{symbolsb}{bold}{OMS}{cmsy}{b}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{symbolsb}
+
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\newcommand\YaHei{\fontspec{微软雅黑}}
+
+%
+% Define bar chart colors
+%
+\definecolor{bblue}{HTML}{4F81BD}
+\definecolor{rred}{HTML}{C0504D}
+\definecolor{ggreen}{HTML}{9BBB59}
+\definecolor{ppurple}{HTML}{9F4C7C}
+
+\pgfplotsset
+{
+	tick label style = {font=\YaHei\mdseries},
+	xticklabel style = {font=\YaHei\mdseries},
+	legend style     = {font=\YaHei\scriptsize\bfseries,cells={anchor=west}},
+}
+
+\begin{document}
+
+% ybar控制同一组内bar之间的微小间隔
+% ymin控制Y轴的最小数字，ymax控制Y轴的最大数字
+\begin{tikzpicture}
+    \begin{axis}[
+        major x tick style = transparent,
+		width  = 0.85*\textwidth,
+        height = 8cm,        
+        ybar   = 5*\pgflinewidth,
+        bar width   = 10pt,
+        ymajorgrids = true,		
+		title  = {\textbf{\YaHei 手机Market份额}},
+		ymin   = 0,
+		ymax   = 100,
+		xtick  = data,		
+        symbolic x coords = {2006,2007,2008,2009},
+        scaled y ticks    = false,
+        enlarge x limits  = 0.25,        
+        legend cell align = left,
+		legend pos = outer north east,
+		enlarge x limits = {abs=1cm}, % The distance between the center of the first bar and the left edge
+		enlarge y limits = false,
+    ]		
+		%
+		% examples:
+		%
+		%\addlegendimage{no markers,green}
+		%\addlegendimage{no markers,blue}
+		%\addlegendimage{only marks, mark=o}
+		%\addlegendimage{only marks, mark=square}
+		%\addlegendimage{line legend,blue}
+		%\addlegendimage{red,only marks,mark=o}
+		%
+		
+		\addlegendimage{blue,->}
+		\addlegendentry[text depth=8pt]{\myovalbox{\bfseries\textcolor{blue}{亿元}}}
+        
+		\addplot[style={bblue,fill=bblue,mark=none}]
+            coordinates {(2006, 60) (2007,60) (2008,60) (2009,78)};
+		\addlegendentry{苹果}
+
+        \addplot[style={rred,fill=rred,mark=none}]
+             coordinates {(2006,70) (2007,40) (2008,45) (2009,58)};
+		\addlegendentry{三星}
+
+        \addplot[style={ggreen,fill=ggreen,mark=none}]
+             coordinates {(2006,33) (2007,20) (2008,95) (2009,38)};
+		\addlegendentry{Motolola}
+
+        \addplot[style={ppurple,fill=ppurple,mark=none}]
+             coordinates {(2006,74) (2007,17) (2008,23) (2009,18)};
+		\addlegendentry{诺基亚}
+		
+        %\legend{苹果,三星,Motolola,诺基亚}
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

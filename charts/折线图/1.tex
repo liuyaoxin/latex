@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[adobefonts]{ctex} %支持中文就靠这一行了
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[active,xetex,tightpage]{preview} %这一行有改动，将pdftex换成xetex
+\usepackage{tcolorbox}
+
+\newtcbox{\myovalbox}{
+	colback=white,
+	colframe=blue,
+	boxrule=1pt,
+	arc=2pt,
+	boxsep=0pt,
+	left=3pt,right=3pt,top=3pt,bottom=3pt}
+	
+\PreviewEnvironment[]{tikzpicture}
+\PreviewEnvironment[]{pgfpicture}
+\DeclareSymbolFont{symbolsb}{OMS}{cmsy}{m}{n}
+\SetSymbolFont{symbolsb}{bold}{OMS}{cmsy}{b}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{symbolsb}
+
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\newcommand\YaHei{\fontspec{微软雅黑}}
+
+%
+% Define bar chart colors
+%
+\definecolor{bblue}{HTML}{4F81BD}
+\definecolor{rred}{HTML}{C0504D}
+\definecolor{ggreen}{HTML}{9BBB59}
+\definecolor{ppurple}{HTML}{9F4C7C}
+
+\pgfplotsset
+{
+	tick label style = {font=\YaHei},
+	legend style     = {font=\YaHei\bfseries\scriptsize,cells={anchor=west}},
+}
+
+\begin{document}
+\begin{tikzpicture}
+    \begin{axis}
+	[
+		title = {\YaHei\bfseries{历年国民生产总值}},
+		title style = {align=center},
+		major x tick style = transparent,
+		major y tick style = transparent,
+		width  = 0.8\textwidth,
+		height = 6cm,	
+		grid   = major,
+		no markers,
+		legend pos = outer north east,
+		%xmin  = 1991,
+		%xmax  = 1999,
+		%xtick = {1991,1992,1993,1994,1995,1996,1997,1998,1999},
+		symbolic x coords = {1991,1992,1993,1994,1995,1996,1997,1998},
+		ymin  = 0,
+		ymax  = 100,
+		ytick = {20,40,60,80,100},		
+		xlabel near ticks,
+		ylabel near ticks,
+		enlarge x limits = false, %{abs = 0.cm}, % The distance between the center of the first bar and the left edge
+		enlarge y limits = false,
+		tick label style = {
+			font = \YaHei\mdseries,
+			/pgf/number format/.cd, set thousands separator = {}},
+    ]
+	    % mark=none选项禁止显示转折点标记。
+		% smooth可以使折线变成光滑的曲线。
+		% round使得端点和连接点光滑。
+		% 最多8年，否则显示故障
+		
+		%
+		% examples:
+		%
+		%\addlegendimage{no markers,green}
+		%\addlegendimage{no markers,blue}
+		%\addlegendimage{only marks, mark=o}
+		%\addlegendimage{only marks, mark=square}
+		%\addlegendimage{line legend,blue}
+		%
+		\addlegendimage{blue,only marks,mark=o}
+		\addlegendentry[text depth=8pt]{\myovalbox{\bfseries\textcolor{blue}{亿元}}}
+		
+		% 加上smooth option可以使折线变成光滑的曲线。
+		\newcommand\MyPlot[1]{\addplot+[line width=2pt,very thick,line join=round,line cap=round]
+			coordinates{#1};}
+		
+		\MyPlot{(1991,73)(1992,68)(1993,83)(1994,53)(1995,67)(1996,57)(1997,67)(1998,47)};		
+		\addlegendentry{诺基亚}
+		
+		\MyPlot{(1991,44)(1992,68)(1993,83)(1994,53)(1995,74)(1996,49)(1997,77)(1998,67)};
+		\addlegendentry{摩托罗拉}
+				
+		\MyPlot{(1991,7)(1992,87)(1993,37)(1994,3)(1995,23)(1996,77)(1997,37)(1998,37)};
+		\addlegendentry{IBM}
+		
+		\MyPlot{(1991,71)(1992,78)(1993,73)(1994,43)(1995,77)(1996,47)(1997,77)(1998,37)};
+		\addlegendentry{微软}
+
+    \end{axis}
+\end{tikzpicture}
+\end{document}

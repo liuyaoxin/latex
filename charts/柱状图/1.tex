@@ -1,0 +1,67 @@
+\documentclass{article}
+\usepackage[adobefonts]{ctex} %支持中文就靠这一行了
+\usepackage{fontspec}
+\usepackage{tikz}
+\usepackage[active,xetex,tightpage]{preview} %这一行有改动，将pdftex换成xetex
+
+\PreviewEnvironment[]{tikzpicture}
+\PreviewEnvironment[]{pgfpicture}
+\DeclareSymbolFont{symbolsb}{OMS}{cmsy}{m}{n}
+\SetSymbolFont{symbolsb}{bold}{OMS}{cmsy}{b}{n}
+\DeclareSymbolFontAlphabet{\mathcal}{symbolsb}
+
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\newcommand\YaHei{\fontspec{微软雅黑}}
+
+%
+% Define bar chart colors
+%
+\definecolor{bblue}{HTML}{4F81BD}
+\definecolor{rred}{HTML}{C0504D}
+\definecolor{ggreen}{HTML}{9BBB59}
+\definecolor{ppurple}{HTML}{9F4C7C}
+
+\pgfplotsset
+{
+	tick label style = {font=\YaHei},
+	xticklabel style = {font=\YaHei},
+	legend style     = {font=\YaHei,cells={anchor=west}},
+}
+
+\begin{document}
+
+% ybar控制同一组内bar之间的微小间隔
+% ymin控制Y轴的最小数字，ymax控制Y轴的最大数字
+\begin{tikzpicture}
+    \begin{axis}[
+        major x tick style = transparent,
+		width  = 0.85*\textwidth,
+        height = 8cm,        
+        ybar   = 5*\pgflinewidth,
+        bar width   = 24pt,
+        ymajorgrids = true,
+		title  = {\YaHei\bfseries 苹果手机销售情况},
+		ymin   = 0,
+		ymax   = 100,
+		xtick  = data,		
+        symbolic x coords = {2006,2007,2008,2009,2010,2011,2012},
+        scaled y ticks    = false,        
+        legend cell align = left,
+		legend pos = north east,
+		nodes near coords,% 在柱子顶部显示实际数字
+        tick align = inside,
+		bar shift = 0pt,
+		enlarge x limits = {abs = 0.5cm}, % The distance between the center of the first bar and the left edge
+		enlarge y limits = false,
+    ]
+		\legend{\bfseries{亿元}}
+        \addplot[style={bblue,fill=bblue,mark=none}]
+            coordinates {(2006, 10)(2007, 60)(2008, 70)(2009, 88)(2010, 44)(2011, 47)(2012, 54)};
+			
+    \end{axis}
+\end{tikzpicture}
+
+\end{document}

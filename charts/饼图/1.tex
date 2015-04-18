@@ -1,0 +1,65 @@
+\documentclass[border=12pt,pstricks]{standalone}
+\usepackage[adobefonts]{ctex} %支持中文就靠这一行了
+\usepackage{pstricks-add}
+\usepackage{fontspec}
+\newcommand\YaHei{\fontspec{微软雅黑}}
+
+%
+% 注意这里定义的宏，决定圆圈的大小，从原点画圆，移动的任务留给其他命令。只负责画圆。
+% 注意这里画了两个重叠的圆，下面的圆是浅灰色，上面的圆是分块的颜色，构成一个圆环。
+% \pscircle*画出实心圆，\pscircle画空心圆。
+% put就是移动当前原点的意思。深刻理解当前原点的概念。原点在当前待输入字符方框的左下角。
+% \nput的第一个参数是参考方向『refangle』。
+% 参考方向用角度表示。参考方向的作用：画出的结果图形会沿着参考方向平移一段距离，通常更美观。
+% 注意参考方向决定平移而不是旋转。换句话说，盒子始终不会倾斜。
+% 参考方向就是相对于A4纸张构成的直角坐标系的旋转角度。
+% 小圆的圆心位于大圆半径的1.25倍处。半径的延长段的终点就是小圆的圆心。小圆根据指定的参考方向的平移。
+% 参考方向就是角平分线与X+轴构成的角度。计算公式：块百分比 × 180 + 前面所有块百分比之和 × 360。
+%
+\def\CPut#1#2{\pscircle*[linecolor=black!15](0,0){5.5mm}%
+	\pscircle[linecolor=#1!70](0,0){5.5mm}\rput(0,0){\tiny\shortstack{#2}}} % 圆圈中的文字为tiny，\shortstack允许圆内文字换行
+
+\begin{document}
+	\begin{pspicture}(-3.5,-3.5)(3.5,3.5)
+		% 下面这一行设置饼图面积。
+		% {25,35,25,15}表示有四块，同时指出每一块的百分比。
+		% 接下来的{4}表示outraged pie（切开的那块饼，可以有多块）的块号（从1开始编号，4就代表第4块）。
+		% 接下来的{2}表示圆的半径。
+		% chartNodeO调整直线的长度
+		\psChart[userColor={blue!70,orange!70,green!70,purple!70},chartSep=8pt,chartNodeO=1.30]{25,35,25,15}{4}{2}
+		%\pscircle*{0.5} % 画核心小圆圈。默认单位为1cm。圆心位于原点，可以省略参数。
+		\pscircle*[linecolor=white]{0.5} % 画白色的实心圆，从而把饼图变成圆环
+		\psset{nodesepA=5pt,nodesepB=-10pt}
+		\YaHei\bfseries % 通篇设置为雅黑粗体无压力！
+
+		% \ncline的作用是在两个node之间划一条直线，大圆是一个node，小圆也是一个node。
+		% \Cput的作用是画圆和文字。
+		% \nput的第一个参数指定圆圈
+		% 说明圆圈中的文字最多5个字，否则会突破边界，难看！
+		\ncline{psChartO1}{psChart1}
+		\nput{45}{psChartO1}
+		{\CPut{blue}{中国共产党 \\
+		{25\,\%}}}
+			
+		\ncline{psChartO2}{psChart2}
+		\nput{153}{psChartO2}
+		{\CPut{orange}{九三学社 \\
+		{35\,\%}}}
+		
+		\ncline{psChartO3}{psChart3}
+		\nput{261}{psChartO3}
+		{\CPut{green}{中国致公党 \\
+		{25\,\%}}}
+		
+		\ncline{psChartO4}{psChart4}
+		\nput{333}{psChartO4}
+		{\CPut{purple}{台湾青盟 \\
+		{15\,\%}}}
+
+		% 下面这一行控制圆圈内部的文字
+		% \rput(psChartI1){Taxes}\rput(psChartI2){Rent}\rput(psChartI3){Bills}\rput(psChartI4){Car}		
+		% \rput(0,0){\tiny\white{中国饼图}}
+		% \rput(0,0){\tiny{中国饼图}}
+		\rput(0,3.0){\YaHei\bfseries\footnotesize{中国Microsoft饼图}} % 添加标题
+	\end{pspicture}
+\end{document}

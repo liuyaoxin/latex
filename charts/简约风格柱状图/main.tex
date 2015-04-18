@@ -1,0 +1,40 @@
+\documentclass[a4paper,twoside,11pt]{scrreprt}
+\usepackage{tikz} 
+\usepackage{pgfplots}
+\usetikzlibrary{positioning}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{patterns}
+\begin{document}
+\makeatletter
+\begin{tikzpicture}
+\begin{axis}[
+    ybar,
+    bar width=1cm, % Width of the bar
+    x=2cm, % Distance between the centers of the bars
+    enlarge x limits={abs=3cm}, % The distance between the center of the first bar and the left edge
+    enlarge y limits=false,
+    ymin=0,
+    xtick=data,
+    xlabel=a label that is longer than the x-axis and needs an automatic break,
+    symbolic x coords={A, B},
+    point meta={y*100}, %y-Werte mal 100 für Prozent 
+    yticklabel={\pgfmathparse{\tick*100}\pgfmathprintnumber{\pgfmathresult}\%},
+    axis lines*=left,
+    clip=false,
+	bar shift = -1cm, % 向右边（或向上边）的偏移值，负值就是相反方向。
+    ]
+\addplot [
+    draw=black,
+    fill=white,
+    nodes near coords={\pgfmathprintnumber{\pgfplotspointmeta}\,\%},
+    error bars/.cd,
+        y dir=both,
+        y explicit
+    ] coordinates{(A,1) (B,.155)+-(.038,.038)};
+\pgfplotsextra{
+    \pgfmathfloattofixed{\pgfplots@data@xmax}
+    \pgfplotsset{xlabel style=1cm}
+}
+\end{axis}
+\end{tikzpicture}
+\end{document}
