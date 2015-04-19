@@ -1,0 +1,11 @@
+Short answer: \csname and \endcsname are a "macro environment" whose contents, if they evaluate (after expanding macros) to "ordinary text", are converted into the name of a macro (or control sequence, hence "csname").
+
+Actually, it is a perhaps strange joke that by the rules of LaTeX macros, you can actually write \begin{csname}...\end{csname} and it will act as you expect, to a certain extent. For example:
+
+\def\macro{text}
+\def\o{o}
+\begin{csname}%
+ macr\o
+\end{csname}
+% Same as \csname macr\o \endcsname
+(when run with latex rather than tex) will produce the word "text" in the output. The % sign is there so that unnecessary spaces don't creep into the name of the macro we are constructing. 

@@ -1,6 +1,3 @@
-\usepackage[adobefonts]{ctex}
-\usepackage{fontspec}
-
 %
 % 不要写错Adobe的四种字体名称：Adobe Song Std，Adobe Fangsong Std，Adobe Heiti Std，Adobe Kaiti Std
 % 
@@ -15,6 +12,7 @@
 \newcommand*{\TimesNewRoman}{\fontspec{Times New Roman}} % Best Serif font in pure English environment
 \newcommand*{\CodeFont}{\fontspec{Courier New}} % 最佳代码显示字体, Best monospace font
 \newcommand*{\CourierNew}{\fontspec{Courier New}} % 最佳中英文混排中的英文字体
+\newcommand*{\kaiti}{\kaishu}
 
 % 注意：微软雅黑不适合显示大段英文字体，主要是其标点符号是中文风格，
 % 用微软雅黑显示一段包含标点符号的英文段落会极其难看。
@@ -63,5 +61,12 @@
 \setCJKmonofont{Adobe Fangsong Std}
 
 % 下面是非常重要的中文字体设定技巧。只有这样提前设定，才可以在文档任意位置指定这里设定的字体。直接用fontspec对中文无效。
-\setCJKfamilyfont{MicrosoftYaHei}{微软雅黑}
-\newcommand*{\YaHei}{\CJKfamily{MicrosoftYaHei}}
+\setCJKfamilyfont{YaHeiFamily}{微软雅黑}
+\newcommand*{\YaHei}{\CJKfamily{YaHeiFamily}}
+
+\newcommand\DefineChineseFont[2]{	
+	\setCJKfamilyfont{Family_#1}{#2}
+	\expandafter\newcommand\csname #1\endcsname{\CJKfamily{Family_#1}}
+}
+
+% e.g. \DefineChineseFont{FangZhengZhongSong}{方正中宋}

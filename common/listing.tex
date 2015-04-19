@@ -27,7 +27,7 @@
 
 % 源代码格式，Label和标题必须同时出现
 \renewcommand*{\lstlistingname}{Code}
-\DeclareCaptionFormat{listing}{\centering\AdobeHeiti\footnotesize{\bfseries{#1#2}\mdseries{#3}}} % Label|Separator|Title
+\DeclareCaptionFormat{listing}{\centering\footnotesize{\bfseries{#1#2}\mdseries{#3}}} % Label|Separator|Title
 \captionsetup[lstlisting]{format=listing}
 \lstset
 {
@@ -41,14 +41,14 @@
 	%stringstyle=\ttfamily\AdobeHeiti\mdseries,
 	xleftmargin=2em,
 	numbers=none,
-	numberstyle=\AdobeHeiti\mdseries\footnotesize,
+	numberstyle=\mdseries\footnotesize,
 	numbersep=1em,
 	tabsize=4,
 	showtabs=false,
 }
 \lstnewenvironment{Listing}[1]{\lstset{language={#1},numbers=none}}{}
 \lstnewenvironment{ListingWithNumbers}[1]{\lstset{language={#1},numbers=left}}{}
-\lstnewenvironment{ListingWithTitleNoNumbers}[2]{\lstset{language={#1},title={\AdobeHeiti\footnotesize #2},numbers=none}}{}
-\lstnewenvironment{ListingWithTitleWithNumbers}[2]{\lstset{language={#1},title={\AdobeHeiti\footnotesize #2},numbers=left}}{}
-\lstnewenvironment{ListingWithCaptionNoNumbers}[2]{\lstset{language={#1},caption={\AdobeHeiti\footnotesize #2},numbers=none}}{}
-\lstnewenvironment{ListingWithCaptionWithNumbers}[2]{\lstset{language={#1},caption={\AdobeHeiti\footnotesize #2},numbers=left}}{}
+\lstnewenvironment{ListingWithTitleNoNumbers}[2]{\lstset{language={#1},title={\bfseries\footnotesize #2},numbers=none}}{}
+\lstnewenvironment{ListingWithTitleWithNumbers}[2]{\lstset{language={#1},title={\bfseries\footnotesize #2},numbers=left}}{}
+\lstnewenvironment{ListingWithCaptionNoNumbers}[2]{\lstset{language={#1},caption={\bfseries\footnotesize #2},numbers=none}}{}
+\lstnewenvironment{ListingWithCaptionWithNumbers}[2]{\lstset{language={#1},caption={\bfseries\footnotesize #2},numbers=left}}{}

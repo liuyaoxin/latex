@@ -1,11 +1,16 @@
-\documentclass[a4paper]{article}
-\usepackage{fontspec}
+\documentclass{article}
 \usepackage[adobefonts]{ctex}
 
+\newcommand\cmdmaker[2]{\expandafter\newcommand\csname #1\endcsname{\textbf{#2}}}
+\cmdmaker{firstone}{Looks like this}
 
-\setCJKfamilyfont{MSYH}{微软雅黑}
-\newcommand*{\YaHei}{\CJKfamily{MSYH}} % 宋体
+\newcommand\DefineChineseFont[1]{	
+	\setCJKfamilyfont{Family_#1}{微软雅黑}
+	\expandafter\newcommand\csname #1\endcsname{\CJKfamily{Family_#1}}
+}
+
+\DefineChineseFont{HelloFont}
 
 \begin{document}
-\YaHei 棕色葫芦
+\HelloFont{中国}
 \end{document}
